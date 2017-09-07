@@ -1,0 +1,5 @@
+= Yourbeat Docs
+
+Welcome to the Yourbeat documentation.
+
+
