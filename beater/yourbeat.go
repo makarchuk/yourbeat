@@ -24,6 +24,8 @@ func New(b *beat.Beat, cfg *common.Config) (beat.Beater, error) {
 		return nil, fmt.Errorf("Error reading config file: %v", err)
 	}
 
+	fmt.Println(config.Metrics[0].Test)
+
 	bt := &Yourbeat{
 		done:   make(chan struct{}),
 		config: config,
@@ -40,13 +42,14 @@ func (bt *Yourbeat) Run(b *beat.Beat) error {
 		return err
 	}
 
-	ticker := time.NewTicker(bt.config.Period)
+	ticker := time.NewTicker(5000)
 	counter := 1
 	for {
 		select {
 		case <-bt.done:
 			return nil
 		case <-ticker.C:
+			return nil
 		}
 
 		event := beat.Event{

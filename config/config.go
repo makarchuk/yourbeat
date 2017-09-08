@@ -3,12 +3,15 @@
 
 package config
 
-import "time"
 
 type Config struct {
-	Period time.Duration `config:"period"`
+	Metrics []*MetricsConfig `config:"metrics"`
+}
+
+type MetricsConfig struct{
+  Test int
 }
 
 var DefaultConfig = Config{
-	Period: 1 * time.Second,
+	Metrics: []*MetricsConfig{&MetricsConfig{Test: 10}},
 }
